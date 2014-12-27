@@ -31,6 +31,16 @@
 #include <linux/input/prevent_sleep.h>
 #endif
 
+<<<<<<< HEAD
+=======
+#define MDSS_PANEL_DEFAULT_VER 0xffffffffffffffff
+#define MDSS_PANEL_UNKNOWN_NAME "unknown"
+
+#ifdef CONFIG_POWERSUSPEND
+#include <linux/powersuspend.h>
+#endif
+
+>>>>>>> 62e91aa... kernel/power/powersuspend: new PM kernel driver for Android w/o early_suspend v1.5 (faux123/Yank555.lu)
 #define DT_CMD_HDR 6
 
 /* NT35596 panel specific status variables */
@@ -632,6 +642,7 @@ static int mdss_dsi_panel_on(struct mdss_panel_data *pdata)
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
 #ifdef CONFIG_MACH_T86519A1
 	gpio_set_value(TPS65132_GPIO_POS_EN, 1);
 	gpio_set_value(TPS65132_GPIO_NEG_EN, 1);
@@ -640,6 +651,12 @@ static int mdss_dsi_panel_on(struct mdss_panel_data *pdata)
 	display_on = true;
 	lazyplug_enter_lazy(false); 
 
+=======
+#ifdef CONFIG_POWERSUSPEND
+	set_power_suspend_state_panel_hook(POWER_SUSPEND_INACTIVE);
+#endif
+
+>>>>>>> 62e91aa... kernel/power/powersuspend: new PM kernel driver for Android w/o early_suspend v1.5 (faux123/Yank555.lu)
 	pinfo = &pdata->panel_info;
 	ctrl = container_of(pdata, struct mdss_dsi_ctrl_pdata,
 				panel_data);
@@ -707,10 +724,15 @@ static int mdss_dsi_panel_off(struct mdss_panel_data *pdata)
 	if (ctrl->off_cmds.cmd_cnt)
 		mdss_dsi_panel_cmds_send(ctrl, &ctrl->off_cmds);
 
+<<<<<<< HEAD
 #ifdef CONFIG_TOUCHSCREEN_DOUBLETAP2WAKE
        ts_get_prevent_sleep(prevent_sleep);
        if (prevent_sleep)
 	       dt2w_scr_suspended = true;
+=======
+#ifdef CONFIG_POWERSUSPEND
+	set_power_suspend_state_panel_hook(POWER_SUSPEND_ACTIVE);
+>>>>>>> 62e91aa... kernel/power/powersuspend: new PM kernel driver for Android w/o early_suspend v1.5 (faux123/Yank555.lu)
 #endif
 
 end:
