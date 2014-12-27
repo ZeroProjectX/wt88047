@@ -25,6 +25,10 @@
 
 #include "mdss_dsi.h"
 
+#ifdef CONFIG_POWERSUSPEND
+#include <linux/powersuspend.h>
+#endif
+
 #define DT_CMD_HDR 6
 
 /* NT35596 panel specific status variables */
@@ -670,6 +674,9 @@ static int mdss_dsi_panel_on(struct mdss_panel_data *pdata)
 
 	display_on = true;
 	lazyplug_enter_lazy(false); 
+#ifdef CONFIG_POWERSUSPEND
+	set_power_suspend_state_panel_hook(POWER_SUSPEND_INACTIVE);
+#endif
 
 	pinfo = &pdata->panel_info;
 	ctrl = container_of(pdata, struct mdss_dsi_ctrl_pdata,
@@ -759,7 +766,9 @@ static int mdss_dsi_panel_off(struct mdss_panel_data *pdata)
 
 	display_on = false;
 	lazyplug_enter_lazy(true);
-
+#ifdef CONFIG_POWERSUSPEND
+	set_power_suspend_state_panel_hook(POWER_SUSPEND_ACTIVE);
+#endif
 
 end:
 	pinfo->blank_state = MDSS_PANEL_BLANK_BLANK;
