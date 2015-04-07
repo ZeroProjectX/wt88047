@@ -152,6 +152,7 @@ config ARCH_MSM8916
 	select MSM_RPM_LOG
 	select MSM_JTAGV8 if CORESIGHT_ETMV4
 	select RCU_BOOST if DEBUG_KMEMLEAK
+	select HAS_MACH_MEMUTILS
 
 config ARCH_FSM9900
 	bool "FSM9900"
@@ -1056,5 +1057,11 @@ config FORCE_FAST_CHARGE
 	help
 	  A simple sysfs interface to increase input current limit to
 	  900mA when charging via USB.
+
+config HAS_MACH_MEMUTILS
+	default n
+	bool "Motorola MSM memcpy enhancements"
+	help
+	Faster memcpy performance for MSM8916.
 
 endif
