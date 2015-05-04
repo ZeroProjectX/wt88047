@@ -330,9 +330,9 @@ static int menu_select(struct cpuidle_driver *drv, struct cpuidle_device *dev)
 static void menu_reflect(struct cpuidle_device *dev, int index)
 {
 	struct menu_device *data = &__get_cpu_var(menu_devices);
+
 	data->last_state_idx = index;
-	if (index >= 0)
-		data->needs_update = 1;
+	data->needs_update = 1;
 }
 
 /**
