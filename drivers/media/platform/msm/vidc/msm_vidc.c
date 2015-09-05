@@ -24,6 +24,8 @@
 
 #define MAX_EVENTS 30
 
+extern void lazyplug_enter_lazy(bool enter);
+
 static int get_poll_flags(void *instance)
 {
 	struct msm_vidc_inst *inst = instance;
@@ -1356,6 +1358,8 @@ void *msm_vidc_open(int core_id, int session_type)
 		goto fail_setup;
 	}
 
+	lazyplug_enter_lazy(true);
+
 	return inst;
 
 fail_setup:
@@ -1485,6 +1489,8 @@ int msm_vidc_close(void *instance)
 	pr_info(VIDC_DBG_TAG "Closed video instance: %pK\n",
 			VIDC_MSG_PRIO2STRING(VIDC_INFO), inst);
 	kfree(inst);
+
+	lazyplug_enter_lazy(false);
 
 	return 0;
 }
