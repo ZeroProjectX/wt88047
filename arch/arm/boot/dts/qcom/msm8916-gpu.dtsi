@@ -28,7 +28,7 @@
 
 		qcom,initial-pwrlevel = <2>;
 
-		/* Idle Timeout */
+		/* Idle Timeout = msec */
 		qcom,idle-timeout = <80>;
 		qcom,strtstp-sleepwake;
 
