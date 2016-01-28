@@ -22,6 +22,7 @@
 #include <linux/leds.h>
 #include <linux/qpnp/pwm.h>
 #include <linux/err.h>
+#include <linux/display_state.h>
 
 #include "mdss_dsi.h"
 #include <linux/hardware_info.h>
@@ -43,6 +44,13 @@
 extern char Lcm_name[HARDWARE_MAX_ITEM_LONGTH]; //wingtech hardware_info
 
 DEFINE_LED_TRIGGER(bl_led_trigger);
+
+bool display_on = true;
+
+bool is_display_on()
+{
+	return display_on;
+}
 
 void mdss_dsi_panel_pwm_cfg(struct mdss_dsi_ctrl_pdata *ctrl)
 {
@@ -622,6 +630,16 @@ static int mdss_dsi_panel_on(struct mdss_panel_data *pdata)
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+=======
+#ifdef CONFIG_MACH_T86519A1
+	gpio_set_value(TPS65132_GPIO_POS_EN, 1);
+	gpio_set_value(TPS65132_GPIO_NEG_EN, 1);
+#endif
+
+	display_on = true;
+
+>>>>>>> ad03ff6... display: add a simple api to query the display state (on/off) at any point in time
 	pinfo = &pdata->panel_info;
 	ctrl = container_of(pdata, struct mdss_dsi_ctrl_pdata,
 				panel_data);
@@ -725,6 +743,13 @@ static int mdss_dsi_panel_low_power_config(struct mdss_panel_data *pdata,
 	else
 		pinfo->blank_state = MDSS_PANEL_BLANK_UNBLANK;
 
+<<<<<<< HEAD
+=======
+	display_on = false;
+
+end:
+	pinfo->blank_state = MDSS_PANEL_BLANK_BLANK;
+>>>>>>> ad03ff6... display: add a simple api to query the display state (on/off) at any point in time
 	pr_debug("%s:-\n", __func__);
 	return 0;
 }
