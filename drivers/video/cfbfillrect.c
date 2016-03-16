@@ -332,7 +332,7 @@ fast_fill16(struct fb_info *p, unsigned long __iomem *dst, int dst_idx,
 			else if (dst_idx == 48) {
 				fb_writew(pat, (u16 *)dstp + 3);
 			dstp++;
-			n -= 64 - dist_idx;
+			n -= 64 - dst_idx;
 			if (n == 0)
 				continue;
 		}
@@ -366,7 +366,7 @@ fast_fill16(struct fb_info *p, unsigned long __iomem *dst, int dst_idx,
 #endif
 	}
 }
-
+}
 static void
 fast_fill32(struct fb_info *p, unsigned long __iomem *dst, int dst_idx,
 	     unsigned long pat, u32 width_in_bits, u32 height)
