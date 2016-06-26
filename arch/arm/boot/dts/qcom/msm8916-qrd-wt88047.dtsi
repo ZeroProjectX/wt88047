@@ -240,8 +240,6 @@ i2c@78ba000 {/* i2c 6 */
 		};
 	};
 
-
-/*
 	ltr559_int_pin {
 		qcom,pins = <&gp 113>;
 		qcom,pin-func = <0>;
@@ -256,8 +254,8 @@ i2c@78ba000 {/* i2c 6 */
 			bias-pull-down;
 		};
 	};
-*/
 
+	/*
 	ltr553_int_pin {
 		qcom,pins = <&gp 113>;
 		qcom,pin-func = <0>;
@@ -272,6 +270,7 @@ i2c@78ba000 {/* i2c 6 */
 			bias-pull-down;
 		};
 	};
+	*/
 
 	akm_reset_pin {
 		qcom,pins = <&gp 36>;
@@ -374,7 +373,6 @@ i2c@78ba000 {/* i2c 6 */
 		yas,position = <5>;
 	};
 
-/*
 	liteon@23 {
 	  	compatible = "ltr,ltr559";
 		reg = <0x23>;
@@ -390,8 +388,8 @@ i2c@78ba000 {/* i2c 6 */
 		ltr,ps-hysteresis-threshold = <30>;
 		ltr,als-polling-time = <200>;
 	};
-*/
 
+	/*
 	liteon@23 {
 		compatible = "liteon,ltr553";
 		reg = <0x23>;
@@ -414,6 +412,7 @@ i2c@78ba000 {/* i2c 6 */
 		liteon,als-equation-2 = <0 0 5926 1300 44 1>;
 		liteon,als-equation-3 = <0 0 0 0 1 1>;
 	};
+	*/
 };
 
 &sdc2_cd_on {
