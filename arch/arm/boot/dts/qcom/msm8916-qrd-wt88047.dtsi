@@ -353,7 +353,7 @@ i2c@78ba000 {/* i2c 6 */
 	};
 
 	akm@c {
-		compatible = "ak, ak09911";
+		compatible = "ak,ak09911";
 		reg = <0x0c>;
 		pinctrl-names = "default", "sleep";
 		pinctrl-0 = <&akm_default>;
