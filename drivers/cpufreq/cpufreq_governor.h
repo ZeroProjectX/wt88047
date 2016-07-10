@@ -178,7 +178,46 @@ struct cs_dbs_tuners {
 	unsigned int sampling_down_factor;
 	unsigned int up_threshold;
 	unsigned int down_threshold;
+	unsigned int down_threshold_suspended;
 	unsigned int freq_step;
+<<<<<<< HEAD
+=======
+	unsigned int sleep_depth;
+	unsigned int touch_load_duration;
+	unsigned int input_boost_freq;
+	unsigned int input_boost_duration;
+	unsigned int twostep_threshold;
+	unsigned int min_load;
+	unsigned int twostep_counter;
+	u64 twostep_time;
+>>>>>>> 18c1286... cpufreq: Add Chill cpu gov
+};
+
+struct ex_dbs_tuners {
+	unsigned int ignore_nice_load;
+	unsigned int sampling_rate;
+	unsigned int up_threshold;
+	unsigned int down_differential;
+	unsigned int active_floor_freq;
+	unsigned int sampling_down_factor;
+	unsigned int powersave;
+};
+
+struct zz_dbs_tuners {
+	unsigned int ignore_nice_load;
+	unsigned int sampling_rate;
+	unsigned int sampling_down_factor;
+	unsigned int up_threshold;
+	unsigned int down_threshold;
+	unsigned int smooth_up;
+	unsigned int scaling_proportional;
+	unsigned int fast_scaling_up;
+	unsigned int fast_scaling_down;
+	unsigned int afs_threshold1;
+	unsigned int afs_threshold2;
+	unsigned int afs_threshold3;
+	unsigned int afs_threshold4;
+>>>>>>> 8940867... cpufreq: Add Chill cpu gov
 };
 
 /* Common Governor data across policies */
