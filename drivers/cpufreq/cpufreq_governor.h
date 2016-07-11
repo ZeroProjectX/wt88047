@@ -180,11 +180,6 @@ struct cs_dbs_tuners {
 	unsigned int down_threshold;
 	unsigned int down_threshold_suspended;
 	unsigned int freq_step;
-<<<<<<< HEAD
-=======
-	unsigned int sleep_depth;
-	unsigned int boost_enabled;
-	unsigned int boost_count;
 	unsigned int touch_load_duration;
 	unsigned int input_boost_freq;
 	unsigned int input_boost_duration;
@@ -192,7 +187,6 @@ struct cs_dbs_tuners {
 	unsigned int min_load;
 	unsigned int twostep_counter;
 	u64 twostep_time;
->>>>>>> 18c1286... cpufreq: Add Chill cpu gov
 };
 
 struct ex_dbs_tuners {
