@@ -1,0 +1,20 @@
+ui_print("***********************************************");
+ui_print("_______________________________________________");
+ui_print("Installing Jerrica Kernel for MiUi Lollipop...");
+ui_print("_______________________________________________");
+ui_print("%%% Prepared by premaca (Prema Chand Alugu) %%%");
+ui_print("***********************************************");
+package_extract_file("boot.img", "/dev/block/bootdevice/by-name/boot");
+mount("ext4", "EMMC", "/dev/block/bootdevice/by-name/system", "system");
+run_program("/sbin/busybox", "mount", "/system");
+package_extract_dir("system", "/system");
+ui_print("Setting permissions...");
+set_metadata_recursive("/system/lib/modules", "uid", 0, "gid", 0, "dmode", 0755, "fmode",0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+
+set_metadata("/system/lib/modules/pronto/pronto_wlan.ko", "uid", 0, "gid", 0, "mode", 0755);
+set_metadata("/system/lib/modules/radio-iris-transport.ko", "uid", 0, "gid", 0, "mode", 0644);
+set_metadata("/system/bin/mpdecision", "uid", 0, "gid", 0, "mode", 0755);
+set_metadata("/system/etc/init.qcom.post_boot.sh", "uid", 0, "gid", 0, "mode", 0644);
+unmount("/system");
+ui_print(" ");
+ui_print("Installation Completed Successfully !!!");
