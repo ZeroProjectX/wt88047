@@ -2347,6 +2347,11 @@ static int hardwareinfo_set(struct ft5x06_ts_data *data, u8 value_name)
 
 	snprintf(firmware_ver, HARDWARE_MAX_ITEM_LONGTH, "%s, %s, 0x%x", vendor_for_id, ic_name, data->fw_ver[0]);
 
+		/*wingtech hardware_info*/
+		err = hardwareinfo_set_prop(HARDWARE_TP,firmware_ver);
+		if (err < 0)
+		return -1;
+
 	return 0;
 }
 #endif
