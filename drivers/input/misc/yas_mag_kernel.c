@@ -1196,7 +1196,7 @@ MODULE_DEVICE_TABLE(i2c, yas_id);
 
 
 static struct of_device_id yas_match_table[] = {
-	{.compatible = "yamaha, yas537",},
+	{.compatible = "yamaha,yas537",},
 	{},
 };
 
