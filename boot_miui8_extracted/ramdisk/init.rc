@@ -464,8 +464,6 @@ on boot
     # Define default initial receive window size in segments.
     setprop net.tcp.default_init_rwnd 60
 
-    start sysinit	
-	
     class_start core
 
 on nonencrypted
@@ -619,10 +617,6 @@ service drm /system/bin/drmserver
     user drm
     group drm system inet drmrpc sdcard_r sdcard_rw media_rw
 
-service sysinit /system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/init.d
-    disabled
-    oneshot	
-	
 service media /system/bin/mediaserver
     class main
     user media

@@ -631,6 +631,7 @@
 # System files
 #
 /system/xbin/shelld     u:object_r:shelld_exec:s0
+/system/xbin/mqsasd     u:object_r:mqsasd_exec:s0
 /system/xbin/mdb_svc    u:object_r:mdb_svc_exec:s0
 /system/bin/fdpp        u:object_r:fdpp_exec:s0
 
