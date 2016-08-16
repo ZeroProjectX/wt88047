@@ -25,7 +25,7 @@ JERRICA_POSTFIX=$(date +"%Y%m%d")
 #@@@@@@@@@@@@@@@@@@@@@@ DEFINITIONS BEGIN @@@@@@@@@@@@@@@@@@@@@@@@@@@#
 ##### Tool-chain, you should get it yourself which tool-chain 
 ##### you would like to use
-KERNEL_TOOLCHAIN=../arm-eabi-4.8/bin/arm-eabi-
+KERNEL_TOOLCHAIN=/media/premaca/working/KERNEL_COMPILE/arm-eabi-4.8/bin/arm-eabi-
 
 ## This script should be inside the kernel-code directory
 KERNEL_DIR=$PWD
@@ -38,7 +38,7 @@ BOOTIMG_TOOLS_PATH=$PWD/mkbootimg_tools/
 
 ## release out directory
 RELEASE_DIR=$KERNEL_DIR/out/
-JERRICA_MI_RELEASE=Jerrica-MI-REL4.0-$JERRICA_POSTFIX.zip
+JERRICA_MI_RELEASE=Jerrica-MI-PremierFinale-$JERRICA_POSTFIX.zip
 
 ## make jobs
 MAKE_JOBS=10
