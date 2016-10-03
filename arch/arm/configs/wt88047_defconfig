@@ -3367,6 +3367,7 @@ CONFIG_MEM_SHARE_QMI_SERVICE=y
 #
 # Firmware Drivers
 #
+
 # CONFIG_FIRMWARE_MEMMAP is not set
 CONFIG_MSM_TZ_LOG=y
 
