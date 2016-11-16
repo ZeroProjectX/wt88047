@@ -632,7 +632,6 @@
 #
 /system/xbin/shelld     u:object_r:shelld_exec:s0
 /system/xbin/mqsasd     u:object_r:mqsasd_exec:s0
-/system/xbin/mdb_svc    u:object_r:mdb_svc_exec:s0
 /system/bin/fdpp        u:object_r:fdpp_exec:s0
 
 #Devices
@@ -648,12 +647,6 @@
 /dev/xiaomi/memsw_state  u:object_r:mcd_device:s0
 /dev/block/zram.*        u:object_r:zram_device:s0
 /data/system/mcd(/.*)?   u:object_r:mcd_data_file:s0
-
-########################################
-# Traffic saving related files and devices
-#
-/dev/socket/tunman       u:object_r:tunman_socket:s0
-/system/xbin/tunman      u:object_r:tunman_exec:s0
 
 ########################################
 # Core dump for miui native debug
@@ -675,6 +668,9 @@
 # Cust files
 #
 /cust(/.*)?         u:object_r:system_file:s0
+#line 1 "miui/device/common/sepolicy/v21/file_contexts"
+/system/xbin/mdb_svc    u:object_r:mdb_svc_exec:s0
+
 #line 1 "vendor/graphiteplus/proprietary/sepolicy//file_contexts"
 /data/user/1[0-9]+/.*  u:object_r:app_data_file:s0
 /data/user/1[0-9]+/com.android.providers.downloads/cache u:object_r:download_file:s0
@@ -687,3 +683,5 @@
 /system/bin/mtd            u:object_r:mt_daemon_exec:s0
 #line 1 "vendor/xiaomi/proprietary/vsimservice/sepolicy/file_contexts"
 /system/bin/vsimd            u:object_r:vsim_daemon_exec:s0
+#line 1 "vendor/xiaomi/proprietary/mlipay-client/sepolicy/file_contexts"
+/system/bin/mlipayd            u:object_r:mlipay_daemon_exec:s0

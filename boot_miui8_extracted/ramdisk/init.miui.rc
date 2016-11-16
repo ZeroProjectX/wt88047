@@ -58,14 +58,6 @@ service mdb_svc  /system/xbin/mdb_svc
     class late_start
     disabled
 
-service tunman /system/xbin/tunman
-    socket tunman stream 0666 system system
-    class main
-    disabled
-
-on property:net.svc.tunman=start
-    start tunman
-
 service otad /bin/otad
     class main
     socket otad stream 0660 updater updater
@@ -124,4 +116,8 @@ service mqsasd /system/xbin/mqsasd daemon
     class main
     user root
     group system
+
+#adb input
+on property:persist.security.adbinput=*
+    restart adbd
 

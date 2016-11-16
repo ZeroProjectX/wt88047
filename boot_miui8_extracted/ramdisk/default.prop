@@ -8,7 +8,6 @@ ro.debuggable=0
 ro.zygote=zygote32
 camera2.portability.force_api=1
 persist.sys.usb.config=mtp
-persist.sys.timezone=Europe/Brussels
 dalvik.vm.dex2oat-Xms=64m
 dalvik.vm.dex2oat-Xmx=512m
 dalvik.vm.image-dex2oat-Xms=64m

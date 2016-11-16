@@ -163,6 +163,7 @@ MiuiInit          u:object_r:system_server_service:s0
 whetstone.activity u:object_r:system_server_service:s0
 miui.security.keystore  u:object_r:system_server_service:s0
 graphicsstats     u:object_r:system_server_service:s0
+perfshielder      u:object_r:system_server_service:s0
 #line 1 "vendor/graphiteplus/proprietary/sepolicy//service_contexts"
 securespaces                              u:object_r:system_server_service:s0
 spaceencryption                           u:object_r:system_server_service:s0
@@ -172,3 +173,5 @@ spacenotification                         u:object_r:system_server_service:s0
 com.xiaomi.mtservice        u:object_r:mt_service:s0
 #line 1 "vendor/xiaomi/proprietary/vsimservice/sepolicy/service_contexts"
 com.xiaomi.vsimservice        u:object_r:vsim_service:s0
+#line 1 "vendor/xiaomi/proprietary/mlipay-client/sepolicy/service_contexts"
+com.xiaomi.mlipayservice        u:object_r:mlipay_service:s0
