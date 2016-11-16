@@ -45,7 +45,7 @@ BOOTIMG_TOOLS_PATH=$PWD/mkbootimg_tools/
 AK2_DIR=$PWD/AnyKernel2
 
 ## FINAL ZIP
-JERRICA_MI_RELEASE=Jerrica-MI-PremierFinale-$JERRICA_POSTFIX.zip
+JERRICA_MI_RELEASE=Jerrica-MI-Cosmos-$JERRICA_POSTFIX.zip
 
 ## make jobs
 MAKE_JOBS=10
