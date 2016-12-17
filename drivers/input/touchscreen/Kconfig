@@ -1163,4 +1163,7 @@ config STATE_NOTIFIER
         bool "State Notifier"
 	default y
 
+config WAKE_GESTURES
+	bool "wake gestures"
+
 endif
