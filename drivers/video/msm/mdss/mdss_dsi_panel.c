@@ -45,6 +45,8 @@ extern char Lcm_name[HARDWARE_MAX_ITEM_LONGTH]; //wingtech hardware_info
 
 DEFINE_LED_TRIGGER(bl_led_trigger);
 
+extern void lazyplug_enter_lazy(bool enter);
+
 bool display_on = true;
 
 bool is_display_on()
@@ -638,6 +640,7 @@ static int mdss_dsi_panel_on(struct mdss_panel_data *pdata)
 #endif
 
 	display_on = true;
+	lazyplug_enter_lazy(false); 
 
 >>>>>>> ad03ff6... display: add a simple api to query the display state (on/off) at any point in time
 	pinfo = &pdata->panel_info;
@@ -746,6 +749,8 @@ static int mdss_dsi_panel_low_power_config(struct mdss_panel_data *pdata,
 <<<<<<< HEAD
 =======
 	display_on = false;
+	lazyplug_enter_lazy(true);
+
 
 end:
 	pinfo->blank_state = MDSS_PANEL_BLANK_BLANK;
