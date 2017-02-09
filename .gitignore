@@ -94,3 +94,10 @@ x509.genkey
 
 # Generated source files
 smd_rpc_sym.c
+
+#
+# Other annoying files
+#
+firmware/synaptics/startup_fw_update-fhd.img
+firmware/synaptics/startup_fw_update.img
+kernel/x509_certificate_list
