@@ -250,6 +250,7 @@ extern void devmgr_unregister_mitigation_client(
 					struct device *dev,
 					struct device_clnt_data *clnt);
 #else
+#ifndef CONFIG_FRANCO_THERMAL
 static inline int msm_thermal_init(struct msm_thermal_data *pdata)
 {
 	return -ENOSYS;
@@ -278,28 +279,7 @@ static inline int msm_thermal_get_cluster_freq_plan(uint32_t cluster,
 {
 	return -ENOSYS;
 }
-static inline int sensor_mgr_init_threshold(struct device *dev,
-				struct threshold_info *thresh_inp,
-				int sensor_id, int32_t high_temp,
-				int32_t low_temp,
-				void (*callback)(struct therm_threshold *))
-{
-	return -ENOSYS;
-}
-static inline int sensor_mgr_convert_id_and_set_threshold(
-			struct threshold_info *thresh_inp)
-{
-	return -ENOSYS;
-}
-static inline int sensor_mgr_set_threshold(uint32_t zone_id,
-			struct sensor_threshold *threshold)
-{
-	return -ENOSYS;
-}
-static inline void sensor_mgr_remove_threshold(struct device *dev,
-				struct threshold_info *thresh_inp)
-{
-}
+#endif
 static inline struct device_clnt_data *devmgr_register_mitigation_client(
 				struct device *dev,
 				const char *device_name,
@@ -315,11 +295,13 @@ static inline int devmgr_client_request_mitigation(
 {
 	return -ENOSYS;
 }
+#ifndef CONFIG_FRANCO_THERMAL
 static inline void devmgr_unregister_mitigation_client(
 					struct device *dev,
 					struct device_clnt_data *clnt)
 {
 }
+#endif
 #endif
 
 #endif /*__MSM_THERMAL_H*/
