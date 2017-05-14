@@ -130,14 +130,6 @@ config CPU_FREQ_DEFAULT_GOV_BIOSHOCK
 	help
 	  Default governor of BioShock kernel
 
-<<<<<<< HEAD
-=======
-config CPU_FREQ_DEFAULT_GOV_SMARTMAX
-            bool "smartmax(battery)"
-            select CPU_FREQ_GOV_SMARTMAX
-            help
-              Use the CPUFreq governor 'smartmax' as default.
-
 config CPU_FREQ_DEFAULT_GOV_IMPULSE
 	bool "impulse"
 	select CPU_FREQ_GOV_IMPULSE
@@ -146,9 +138,6 @@ config CPU_FREQ_DEFAULT_GOV_IMPULSE
 	  you to get a full dynamic cpu frequency capable system by simply
 	  loading your cpufreq low-level hardware driver, using the
 	  'impulse' governor for latency-sensitive workloads.
-
->>>>>>> 2d5f435... cpufreq: Add latest impulse governor
-endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
 	tristate "'performance' governor"
