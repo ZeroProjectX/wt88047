@@ -585,6 +585,9 @@ KBUILD_CFLAGS   += $(call cc-disable-warning,format-truncation,)
 # Kill misleading indentation warnings (fuck you prima)
 KBUILD_CFLAGS   += $(call cc-disable-warning,misleading-indentation,)
 
+# Disable incompatible pointer types warnings
+KBUILD_CFLAGS   += $(call cc-disable-warning,incompatible-pointer-types,)
+
 ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS	+= -Os
 else
