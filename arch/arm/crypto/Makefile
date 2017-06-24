@@ -20,4 +20,6 @@ quiet_cmd_perl = PERL    $@
 $(src)/aesbs-core.S_shipped: $(src)/bsaes-armv7.pl
 	$(call cmd,perl)
 
+ccflags-y := -O3
+
 .PRECIOUS: $(obj)/aesbs-core.S
