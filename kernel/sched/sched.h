@@ -1390,16 +1390,7 @@ static inline void inc_nr_running(struct rq *rq)
 			smp_wmb();
 			smp_send_reschedule(rq->cpu);
 		}
-<<<<<<< HEAD
        }
-<<<<<<< HEAD
-=======
-#ifdef CONFIG_INTELLI_PLUG
-	write_seqcount_end(&nr_stats->ave_seqcnt);
-#endif
-=======
->>>>>>> c244425... sched/fair: Implement fast idling of CPUs when the system is partially loaded
->>>>>>> 96fb449... sched/fair: Implement fast idling of CPUs when the system is partially loaded
 #endif
        }
 }
