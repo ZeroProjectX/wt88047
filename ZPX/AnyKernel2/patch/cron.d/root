@@ -1,0 +1,7 @@
+# each minutes    * * * * *
+# every 2 minutes */2 * * * *
+# every 1 hours   * */1 * * *
+# every 2 hours   * */2 * * *
+# every 1 day     * * */1 * *
+
+* */4 * * * /system/etc/init.d/99trim_partitions
