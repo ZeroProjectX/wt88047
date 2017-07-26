@@ -548,6 +548,7 @@ config MSM_PACMAN
 
 config MSM_CORE_CTL_HELPER
 	tristate "Core control helper functions for dynamically hotplug CPUs"
+	default n
 	help
 	  Provide helper functions for core control driver. Core control
 	  driver dynamicatlly hotplugs CPUs from kernel based on current
