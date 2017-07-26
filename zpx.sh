@@ -86,7 +86,7 @@ rm -f .version;
 version() {
 	printf "Kernel build number: ";
 	read v;
-  EV=EXTRAVERSION=-$v-;
+  EV=EXTRAVERSION=$v;
   echo "$v" > .extraversion;
 	
 }
