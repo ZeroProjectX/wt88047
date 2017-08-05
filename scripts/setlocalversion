@@ -67,15 +67,9 @@ scm_version()
 		[ -w . ] && git update-index --refresh --unmerged > /dev/null
 
 		# Check for uncommitted changes
-<<<<<<< HEAD
 		#if git diff-index --name-only HEAD | grep -qv "^scripts/package"; then
 		#	printf '%s' -dirty
 		#fi
-=======
-		if git diff-index --name-only HEAD | grep -qv "^scripts/package"; then
-			printf '%s' #-dirty
-		fi
->>>>>>> a2fce90... scripts/setlocalversion: removed +
 
 		# All done with git
 		return
