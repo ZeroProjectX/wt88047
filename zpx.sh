@@ -12,6 +12,7 @@
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
 
 ### This script is to compile JERRICA kernel for MiUi7/8
+#### Edited by Yudi Widiyanto for ZPX
 
 ### This is INLINE_KERNEL_COMPILATION
 
@@ -20,17 +21,20 @@
 ####    arm-eabi-4.8  kernel-code
 ####
 
-JERRICA_POSTFIX=$(date +"%Y%m%d")
+ZPX_POSTFIX=$(date +"%Y%m%d")
 
 ## platform specifics
+export KBUILD_BUILD_USER="Cangkuls"
+export KBUILD_BUILD_HOST="ZeroProjectX"
 export ARCH=arm
 export SUBARCH=arm
 TOOL_CHAIN_ARM=arm-eabi-
+export USE_CCACHE=1
 
 #@@@@@@@@@@@@@@@@@@@@@@ DEFINITIONS BEGIN @@@@@@@@@@@@@@@@@@@@@@@@@@@#
 ##### Tool-chain, you should get it yourself which tool-chain 
 ##### you would like to use
-KERNEL_TOOLCHAIN=/media/premaca/working/KERNEL_COMPILE/arm-eabi-4.8/bin/$TOOL_CHAIN_ARM
+KERNEL_TOOLCHAIN=/root/arm-eabi-4.8/bin/$TOOL_CHAIN_ARM
 
 ## This script should be inside the kernel-code directory
 KERNEL_DIR=$PWD
@@ -45,7 +49,7 @@ BOOTIMG_TOOLS_PATH=$PWD/mkbootimg_tools/
 AK2_DIR=$PWD/AnyKernel2
 
 ## FINAL ZIP
-JERRICA_MI_RELEASE=Jerrica-MI-Cosmos-$JERRICA_POSTFIX.zip
+ZPX_MI_RELEASE=ZPX-Redmi2-$ZPX_POSTFIX-MIUI-Lollipop.zip
 
 ## make jobs
 MAKE_JOBS=10
@@ -132,12 +136,8 @@ exec_command rm -f  $BOOTIMG_EXTRACTED_DIR/kernel $BOOTIMG_EXTRACTED_DIR/dt.img
 
 echo "***************!!!!!  CLEAN  $AK2_OUT_DIR !!!!!********************"
 if [ "$BUILD_WITH_AK2" == 'YES' ]; then
-exec_command rm -f $AK2_OUT_DIR/*.zip
+exec_command rm -rf  $AK2_OUT_DIR/modules/*
 fi
-exec_command rm -rf $AK2_OUT_DIR/dtb
-exec_command rm -rf $AK2_OUT_DIR/dt.img
-exec_command rm -rf $AK2_OUT_DIR/zImage
-exec_command rm -rf $AK2_OUT_DIR/modules/*
 
 echo "***** Tool chain is set to $KERNEL_TOOLCHAIN *****"
 echo "***** Kernel defconfig is set to $KERNEL_DEFCONFIG *****"
@@ -215,7 +215,11 @@ else
 	# copy modules to AnyKernel2/modules/
 	#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
 	echo "***** Copying Modules to $AK2_DIR *****"
-	exec_command cp `find . -name "*.ko"` $AK2_DIR/modules/
+	exec_command mkdir -p $AK2_DIR/modules/pronto/
+	exec_command cp $KERNEL_DIR/drivers/staging/prima/wlan.ko $AK2_DIR/modules/pronto
+	exec_command cp $KERNEL_DIR/drivers/media/radio/radio-iris-transport.ko $AK2_DIR/modules/
+	exec_command cd $AK2_DIR/modules/pronto/
+	exec_command mv wlan.ko pronto_wlan.ko
 
 	#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
 	# copy zImage and dt.img to boot_miui8_extracted
@@ -233,14 +237,14 @@ fi
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
 echo "***** Verify what we got in $RELEASE_DIR *****"
 exec_command ls $RELEASE_DIR
-echo "***** MAKING the Final Flashable ZIP $JERRICA_MI_RELEASE from $RELEASE_DIR *****"
+echo "***** MAKING the Final Flashable ZIP $ZPX_MI_RELEASE from $RELEASE_DIR *****"
 exec_command cd $RELEASE_DIR
 if [ "$BUILD_WITH_BIT" == 'YES' ]; then
-	exec_command zip -r9 $JERRICA_MI_RELEASE *
+	exec_command zip -r9 $ZPX_MI_RELEASE *
 else
 	exec_command cd $AK2_DIR
 	exec_command mv dt.img dtb
-	exec_command zip -r9 $JERRICA_MI_RELEASE * -x README $JERRICA_MI_RELEASE
+	exec_command zip -r9 $ZPX_MI_RELEASE * -x README $ZPX_MI_RELEASE
 fi
 
 echo "***** Please Scroll up and verify for any Errors *****"
@@ -248,11 +252,15 @@ echo "***** Script exiting Successfully !! *****"
 
 exec_command cd $KERNEL_DIR
 
+# The whole process is now complete. Now do some touches...
+# move ZIP to /root
+mv -f $AK2_DIR/$ZPX_MI_RELEASE /root/r2/$ZPX_MI_RELEASE;
+
 echo "#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#"
 echo "##                                                      ##"
 echo "##     KERNEL BUILD IS SUCCESSFUL                       ##"
 echo "##                                                      ##"
-echo "##     Flash this $RELEASE_DIR/$JERRICA_MI_RELEASE      ##"
+echo "##     Flash this $RELEASE_DIR/$ZPX_MI_RELEASE      ##"
 echo "##                                                      ##"
 echo "#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#"
 

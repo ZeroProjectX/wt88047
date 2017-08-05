@@ -1,0 +1,44 @@
+#!/system/bin/sh
+
+##ZeroProjectX
+
+sleep 5
+
+echo 1 > /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
+stop logd
+chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+echo 302400 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+echo 1 > /sys/devices/system/cpu/cpu1/online
+chmod 644 /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
+echo 302400 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
+chmod 444 /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
+echo 1 > /sys/devices/system/cpu/cpu2/online
+chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq
+echo 302400 > /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq
+chmod 444 /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq
+echo 1 > /sys/devices/system/cpu/cpu3/online
+chmod 644 /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq
+echo 302400 > /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq
+chmod 444 /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq
+echo 19 > /sys/class/timed_output/vibrator/vtg_level
+echo 50 > /sys/module/msm_thermal/parameters/temp_threshold
+echo 2 > /sys/block/mmcblk0/queue/rq_affinity
+
+sleep 7
+
+chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+echo interactive > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+echo 1 > /sys/devices/system/cpu/cpu1/online
+chmod 644 /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
+echo interactive > /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
+chmod 444 /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
+echo 1 > /sys/devices/system/cpu/cpu2/online
+chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+echo interactive > /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+chmod 444 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+echo 1 > /sys/devices/system/cpu/cpu3/online
+chmod 644 /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
+echo interactive > /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
+chmod 444 /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
