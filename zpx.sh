@@ -21,7 +21,7 @@
 ####    arm-eabi-4.8  kernel-code
 ####
 
-ZPX_POSTFIX=$(date +"%Y%m%d")
+ZPX_POSTFIX=$(date +"%Y%m%d-%H%M")
 
 ## platform specifics
 export KBUILD_BUILD_USER="Cangkuls"
@@ -49,7 +49,7 @@ BOOTIMG_TOOLS_PATH=$PWD/mkbootimg_tools/
 AK2_DIR=$PWD/AnyKernel2
 
 ## FINAL ZIP
-ZPX_MI_RELEASE=ZPX-Redmi2-$ZPX_POSTFIX-MIUI-Lollipop.zip
+ZPX_MI_RELEASE=ZPX-CERBERUS-MIUI-Lollipop-$ZPX_POSTFIX.zip
 
 ## make jobs
 MAKE_JOBS=10
@@ -258,9 +258,7 @@ mv -f $AK2_DIR/$ZPX_MI_RELEASE /root/r2/$ZPX_MI_RELEASE;
 
 echo "#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#"
 echo "##                                                      ##"
-echo "##     KERNEL BUILD IS SUCCESSFUL                       ##"
-echo "##                                                      ##"
-echo "##     Flash this $RELEASE_DIR/$ZPX_MI_RELEASE      ##"
+echo "##              KERNEL BUILD IS SUCCESSFUL              ##"
 echo "##                                                      ##"
 echo "#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#"
 
