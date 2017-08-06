@@ -12,8 +12,6 @@ struct state_event {
 
 extern bool state_suspended;
 extern bool use_fb_notifier;
-extern void state_suspend(void);
-extern void state_resume(void);
 int state_register_client(struct notifier_block *nb);
 int state_unregister_client(struct notifier_block *nb);
 int state_notifier_call_chain(unsigned long val, void *v);
