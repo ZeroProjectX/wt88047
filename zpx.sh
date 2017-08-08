@@ -27,7 +27,7 @@ export USE_CCACHE=1
 #@@@@@@@@@@@@@@@@@@@@@@ DEFINITIONS BEGIN @@@@@@@@@@@@@@@@@@@@@@@@@@@#
 ##### Tool-chain, you should get it yourself which tool-chain 
 ##### you would like to use
-KERNEL_TOOLCHAIN=/root/android-prebuilts-gcc-linux-x86-arm-arm-eabi-4.9/bin/$TOOL_CHAIN_ARM
+KERNEL_TOOLCHAIN=/root/android_prebuilts_gcc_linux-x86_arm_arm-eabi-4.9/bin/$TOOL_CHAIN_ARM
 
 ## This script should be inside the kernel-code directory
 KERNEL_DIR=$PWD
