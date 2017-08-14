@@ -30,14 +30,7 @@ on property:persist.spectrum.profile=0
    chmod 644 /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
    chmod 444 /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
-    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "25000 1094400:50000"
-    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 90
-    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
-    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 998400
-    write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
-    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "1 800000:85 998400:90 1094400:80"
-    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 50000
-    write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 50000
+   write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
    chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 302400
    chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
@@ -54,19 +47,22 @@ on property:persist.spectrum.profile=0
    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 302400
    chmod 444 /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq
    chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-   write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1401600
+   write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1363200
    chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
    chmod 644 /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
-   write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1401600
+   write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1363200
    chmod 444 /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
    chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
-   write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1401600
+   write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1363200
    chmod 444 /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
    chmod 644 /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
-   write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1401600
+   write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1363200
    chmod 444 /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
-   write /sys/module/cpu_boost/parameters/sync_threshold 0
-   write /sys/module/msm_thermal/parameters/temp_threshold 55
+   write /sys/module/cpu_boost/parameters/sync_threshold 998400
+   chmod 0664 /sys/module/lazyplug/parameters/nr_run_profiles_sel
+   write /sys/module/lazyplug/parameters/nr_run_profiles_sel 6
+   write /sys/module/lazyplug/parameters/nr_run_hysteresis 4
+   write /sys/module/msm_thermal/parameters/temp_threshold 50
    write /sys/module/msm_perfomance/parameters/touchboost 1
    write /sys/module/cpu_boost/parameters/input_boost_enabled 1
    write /sys/module/cpu_boost/parameters/input_boost_freq "0:998400 1:998400 2:0 3:0"
@@ -80,9 +76,6 @@ on property:persist.spectrum.profile=0
    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 100000000
    write /sys/devices/soc.0/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 400000000
    write /sys/devices/soc.0/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/governor msm-adreno-tz
-   write /sys/module/msm_thermal/parameters/freq_warm 1209600
-   write /sys/module/lazyplug/parameters//lazyplug_active 0
-   write /sys/kernel/zen_decision/enabled 1
 
 # Performance (based on DrunkSauce Lite)
 on property:persist.spectrum.profile=1
@@ -146,10 +139,6 @@ on property:persist.spectrum.profile=1
    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 100000000
    write /sys/devices/soc.0/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 465000000
    write /sys/devices/soc.0/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/governor performance
-   write /sys/module/msm_thermal/parameters/temp_threshold 60
-   write /sys/module/msm_thermal/parameters/freq_warm 1363200
-   write /sys/module/lazyplug/parameters//lazyplug_active 1
-   write /sys/kernel/zen_decision/enabled 0
 
 # Battery
 on property:persist.spectrum.profile=2
@@ -229,10 +218,6 @@ on property:persist.spectrum.profile=2
    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 50000000
    write /sys/devices/soc.0/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 310000000
    write /sys/devices/soc.0/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/governor msm-adreno-tz
-   write /sys/module/msm_thermal/parameters/temp_threshold 50
-   write /sys/module/msm_thermal/parameters/freq_warm 1152000
-   write /sys/module/lazyplug/parameters//lazyplug_active 0
-   write /sys/kernel/zen_decision/enabled 1
 
 # Gaming
 on property:persist.spectrum.profile=3
@@ -303,7 +288,4 @@ on property:persist.spectrum.profile=3
    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 200000000
    write /sys/devices/soc.0/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 465000000
    write /sys/devices/soc.0/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/governor performance
-   write /sys/module/msm_thermal/parameters/temp_threshold 60
-   write /sys/module/msm_thermal/parameters/freq_warm 1363200
-   write /sys/module/lazyplug/parameters//lazyplug_active 1
-   write /sys/kernel/zen_decision/enabled 0
+
