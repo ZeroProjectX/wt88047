@@ -173,6 +173,9 @@ cd ../..;
 # move ZIP to /root
 mv -f $ANYKERNEL/$ZIP /root/r2/$ZIP;
 
+# automatic upload to my account telegram
+curl -F chat_id="257612196" -F document=@"r2/$ZIP" https://api.telegram.org/bot341370978:AAHNAQa340-t2heNRxftBxlOY5j8PvvjBDE/sendDocument
+
 #Then doing cleanup
 echo "Doing post-cleanup...";
 rm -f $KERNELPATH/$ZIMAGE;
