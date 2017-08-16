@@ -27,8 +27,9 @@
 
 		qcom,chipid = <0x03000600>;
 
-		qcom,initial-pwrlevel = <2>;
+		qcom,initial-pwrlevel = <3>;
 
+		qcom,bus-control;
 		qcom,idle-timeout = <80>; //msec
 		qcom,strtstp-sleepwake;
 
