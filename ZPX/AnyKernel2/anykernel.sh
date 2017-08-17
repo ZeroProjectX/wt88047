@@ -25,7 +25,6 @@ device.name5=
 # import patching functions/variables - see for reference
 . /tmp/anykernel/tools/ak2-core.sh;
 
-
 ## AnyKernel permissions
 # set permissions for included ramdisk files
 mount /system;
@@ -35,10 +34,9 @@ cp -rpf $patch/init.d /system/etc
 cp -rpf $patch/cron.d /system/etc
 chmod -R 755 /system/etc/init.d
 chmod -R 755 /system/etc/cron.d
-rm /system/etc/init.d/99zpx_zram
+#rm /system/etc/init.d/99zpx_zram
 #mv /system/bin/vm_bms /system/bin/vm_bms.bak
 #chmod 644 $ramdisk/sbin/media_profiles.xml
-
 
 ## AnyKernel install
 find_boot;
@@ -46,11 +44,14 @@ dump_boot;
 
 # begin ramdisk changes
 
-backup_file init.qcom.power.rc;
+#change minfreq buildprop
+sed -i '/ro.min_freq_0/d' /system/build.prop
+sed -i '/^$/d' /system/build.prop
+echo "ro.min_freq_0=302400" >> /system/build.prop
+
 replace_line fstab.qcom "/dev/block/zram0" "/dev/block/zram0                              none        swap            defaults             zramsize=1073741824,notrim";
 
 # init.qcom.rc
-backup_file init.qcom.rc;
 insert_line init.qcom.rc "init.spectrum.rc" after "import init.target.rc" "import /init.spectrum.rc"
 
 ## init.tuna.rc
