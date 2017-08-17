@@ -27,7 +27,7 @@ export USE_CCACHE=1
 #@@@@@@@@@@@@@@@@@@@@@@ DEFINITIONS BEGIN @@@@@@@@@@@@@@@@@@@@@@@@@@@#
 ##### Tool-chain, you should get it yourself which tool-chain 
 ##### you would like to use
-KERNEL_TOOLCHAIN=/root/arm-eabi-4.9/bin/$TOOL_CHAIN_ARM
+KERNEL_TOOLCHAIN=/root/arm-eabi-5.3/bin/$TOOL_CHAIN_ARM
 
 ## This script should be inside the kernel-code directory
 KERNEL_DIR=$PWD
