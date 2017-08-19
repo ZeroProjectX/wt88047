@@ -66,10 +66,16 @@ on property:persist.spectrum.profile=0
    write /sys/devices/soc.0/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/governor msm-adreno-tz
    write /sys/block/mmcblk0/queue/rq_affinity 1
    write /sys/block/mmcblk1/queue/rq_affinity 1
-   write /sys/block/mmcblk0/queue/scheduler zen
-   write /sys/block/mmcblk1/queue/scheduler zen
-   write /sys/block/mmcblk0/queue/read_ahead_kb 128
-   write /sys/block/mmcblk1/queue/read_ahead_kb 128
+   write /sys/block/mmcblk0/queue/scheduler maple
+   write /sys/block/mmcblk1/queue/scheduler maple
+   write /sys/block/mmcblk0/queue/read_ahead_kb 512
+   write /sys/block/mmcblk0/queue/iosched/writes_starved 4
+   write /sys/block/mmcblk0/queue/iosched/fifo_batch 16
+   write /sys/block/mmcblk0/queue/iosched/sync_read_expire 350
+   write /sys/block/mmcblk0/queue/iosched/sync_write_expire 550
+   write /sys/block/mmcblk0/queue/iosched/async_read_expire 250
+   write /sys/block/mmcblk0/queue/iosched/async_write_expire 450
+   write /sys/block/mmcblk0/queue/iosched/sleep_latency_multiple 10
    write /sys/module/lowmemorykiller/parameters/minfree "1024,2048,4096,8192,12288,16384"
    stop logd
    write /sys/class/timed_output/vibrator/vtg_level 19
