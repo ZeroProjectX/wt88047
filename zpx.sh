@@ -173,9 +173,13 @@ cd ../..;
 # move ZIP to /root
 mv -f $ANYKERNEL/$ZIP /root/r2/$ZIP;
 
-# automatic upload to my account telegram
+echo "Uploading to my account telegram. . .";
 cd
 curl -F chat_id="257612196" -F document=@"r2/$ZIP" https://api.telegram.org/bot341370978:AAHNAQa340-t2heNRxftBxlOY5j8PvvjBDE/sendDocument
+
+echo "Uploading to Google Drive. . .";
+cd
+./gdrive upload -p 0BwtEz6zM0SR0cmRBUWlTQUZ4UUU --share --no-progress /root/r2/$ZIP;
 
 #Then doing cleanup
 echo "Doing post-cleanup...";
