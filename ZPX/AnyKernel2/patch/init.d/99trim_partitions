@@ -1,0 +1,6 @@
+#!/system/bin/sh
+fstrim -v /system
+fstrim -v /data
+fstrim -v /cache
+sysctl -w vm.drop_caches=3
+date > /data/fstrim.log
