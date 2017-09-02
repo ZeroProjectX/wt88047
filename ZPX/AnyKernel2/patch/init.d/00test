@@ -1,0 +1,6 @@
+#!/system/bin/sh
+#init.d test
+
+echo "Init.d is working !!!" >> /data/Test.log
+echo "excecuted on $(date)" >> /data/Test.log
+echo "excecuted on $(date)" >> /sdcard/tesinit.log

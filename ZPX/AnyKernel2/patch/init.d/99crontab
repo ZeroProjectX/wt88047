@@ -1,0 +1,21 @@
+#!/system/bin/sh 
+
+    mount -o remount,rw -t auto /system 
+    echo "root:x:0:0::/system/etc/cron.d:/system/bin/sh" > /system/etc/passwd 
+    echo "root:x:0:root" > /system/etc/group 
+    echo "root:*:12410:0:99999:7:::" > /system/etc/shadow 
+	mount -o remount,rw -t auto /system 
+
+
+if test -f /bin/sh 
+then 
+	 sleep 1 
+else 
+	mount -o remount,rw rootfs /
+    ln -s /system/bin/* /bin
+    ln -s /system/bin /bin
+	mount -o remount,rw rootfs / 
+fi 
+
+date > /data/crontab.log; 
+crond -b -c /system/etc/cron.d -l 0 -L /data/crontab.log;
